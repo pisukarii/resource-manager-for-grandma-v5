@@ -6,7 +6,7 @@ import Foundation
 /// the destination — checked before every copy-in so a drop never silently
 /// replaces same-named data.
 @MainActor
-private func confirmOverwrite(fileName: String, targetName: String) -> Bool {
+func confirmOverwrite(fileName: String, targetName: String) -> Bool {
     let alert = NSAlert()
     alert.messageText = "上書きの確認"
     alert.informativeText = "「\(fileName)」は既に\(targetName)に存在します。上書きしますか？"
@@ -23,7 +23,7 @@ private func confirmOverwrite(fileName: String, targetName: String) -> Bool {
 /// actively writing to — rather than a bug in how the path was built.
 /// Surfacing that explanation (instead of the raw Cocoa error text) tells
 /// the user what to actually do about it: refresh and retry.
-private func transferErrorMessage(for error: Error) -> String {
+func transferErrorMessage(for error: Error) -> String {
     let nsError = error as NSError
     if nsError.domain == NSCocoaErrorDomain, nsError.code == 4 || nsError.code == 260 {
         return "ファイルが見つかりませんでした。一覧を読み込んだ後にファイルが変更・削除された可能性があります(コンソール/onPC側が同時に書き込んでいる場合など)。一覧を更新してからもう一度お試しください。"

@@ -110,6 +110,29 @@ struct FileListView: View {
                         }
                         return true
                     }
+                    // ⌘C / ⌘V and 編集 > コピー / ペースト: files go to the system
+                    // pasteboard, so the Finder can paste them, and files copied in
+                    // the Finder can be pasted here.
+                    .onCopyCommand {
+                        FileClipboard.copy(entries.filter { selection.contains($0.id) }, in: source, transferState: transferState)
+                        return []       // written to the pasteboard by FileClipboard, not by SwiftUI
+                    }
+                    .onPasteCommand(of: [.fileURL, .ma3InternalFileRef]) { providers in
+                        let pasted = FileClipboard.payloadsFromPasteboard(store: store)
+                        if pasted.isEmpty {
+                            loadDropPayloads(from: providers) { payloads in
+                                Task {
+                                    await FileClipboard.paste(payloads, into: source, at: currentPath, store: store, transferState: transferState)
+                                    await reload()
+                                }
+                            }
+                        } else {
+                            Task {
+                                await FileClipboard.paste(pasted, into: source, at: currentPath, store: store, transferState: transferState)
+                                await reload()
+                            }
+                        }
+                    }
                 if let inspected = inspectedEntry {
                     ResourceInspectorView(
                         source: source,
@@ -290,6 +313,8 @@ struct FileListView: View {
             Text("ファイルがありません")
                 .foregroundStyle(.secondary)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .focusable()                // so ⌘V can paste into an empty folder
+                .focusEffectDisabled()
         } else {
             List(filteredEntries, selection: $selection) { entry in
                 FileRowView(

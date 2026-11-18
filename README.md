@@ -1,5 +1,9 @@
 # Resource Manager for grandMA
 
+## [⬇ ダウンロード(macOS 14 以降)](https://github.com/pisukarii/resource-manager-for-grandma-v5/releases/latest/download/ResourceManagerForGrandMA-macOS-v5.1.zip)
+
+zip を展開して `Resource Manager for grandMA.app` を `/Applications` に入れるだけです(インストーラ不要・無料)。初回の起動方法は[こちら](#ダウンロードしてすぐ使う)。 ・ [すべてのバージョン](https://github.com/pisukarii/resource-manager-for-grandma-v5/releases)
+
 grandMA3 / grandMA2 のファイルに素早くアクセスし、管理するための Mac アプリです。ローカル onPC・USBメモリ・実機コンソール/他のonPC(SFTP)を横断して Shows / Macros / Presets などのフォルダに一発でジャンプし、ドラッグ&ドロップでインポート/エクスポートできます。
 
 **grandMA3 / grandMA2 のデータが入ったUSBメモリを挿すだけで自動検出**され、「Sourceとして追加しますか？」と聞かれるので、毎回手動でボリュームを探す必要がありません。
@@ -32,6 +36,7 @@ GOBOスロットの画像は、grandMA3に入っているデフォルトGOBO(約
 - ローカル onPC(`~/MALightingTechnology`)・USBメモリ・SFTPを横断してファイル管理
 - Shows / Macros / Sequences / Presets など grandMA3 のフォルダ構成をワンクリックでナビゲート(共有ライブラリ `gma3_library` も単独のSourceとして追加可能)
 - Source間のドラッグ&ドロップ(SFTP含む)、Finderからのインポート。同名ファイルがあれば上書き確認
+- **コピー&ペースト**(⌘C / ⌘V、編集メニュー): アプリ内の Source 間、そして Finder との間を相互に。同じフォルダに貼ると、元ファイルは上書きせず `… copy` という別名で作成
 - ファイルのリネーム・削除(確認ダイアログ、ゴミ箱送り)
 - クイックオープン検索(全Source横断)、フィクスチャライブラリのメーカー名フィルタ
 - 設定(⌘,)や左のカテゴリ一覧から、表示するカテゴリをチェックで選択
@@ -50,7 +55,7 @@ GOBOスロットの画像は、grandMA3に入っているデフォルトGOBO(約
 
 ## ダウンロードしてすぐ使う
 
-インストーラ不要、Xcode不要です。[Releases](../../releases) から `ResourceManagerForGrandMA-macOS-v5.zip` をダウンロードしてください。
+インストーラ不要、Xcode不要です。[Releases](../../releases) から `ResourceManagerForGrandMA-macOS-v5.1.zip` をダウンロードしてください。
 
 1. zipを展開
 2. `Resource Manager for grandMA.app` を `/Applications` に入れて起動

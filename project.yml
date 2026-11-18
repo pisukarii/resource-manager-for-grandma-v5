@@ -31,8 +31,8 @@ targets:
       properties:
         CFBundleDisplayName: Resource Manager for grandMA
         CFBundleName: Resource Manager for grandMA
-        CFBundleShortVersionString: "5.0.0"
-        CFBundleVersion: "5"
+        CFBundleShortVersionString: "5.1.0"
+        CFBundleVersion: "6"
         LSMinimumSystemVersion: "14.0"
         NSHumanReadableCopyright: "© 2026 pisukari"
         CFBundleLocalizations: [ja, en]

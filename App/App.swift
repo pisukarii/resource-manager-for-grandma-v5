@@ -9,6 +9,7 @@ struct GrandMAResourceManagerApp: App {
     @State private var transferState = TransferState()
 
     init() {
+        FileClipboard.cleanStaging()    // files staged for the Finder by an earlier run
         let store = SourceStore()
         _store = State(initialValue: store)
         _usbWatcher = State(initialValue: USBVolumeWatcher(store: store))
